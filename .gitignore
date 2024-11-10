@@ -1,2 +1,4 @@
-btre\__pycache__
-btre\__init__.py
+btre/__pycache__
+btre/__init__.py
+btre/__pycache__/*
+btre/__init__.py/*
