@@ -149,3 +149,8 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'ardianumam@gmail.com'
 EMAIL_HOST_PASSWORD = 'lwwa ijdf bssx ggxo'
 EMAIL_USE_TLS = True
+
+try:
+    from .local_settings import *
+except:
+    pass
