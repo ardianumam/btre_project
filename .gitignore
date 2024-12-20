@@ -5,4 +5,4 @@ btre_resources/
 btre/__pycache__
 pages/__pycache__
 pages/migrations/__pycache__
-static/
+/static
