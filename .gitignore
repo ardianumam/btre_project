@@ -3,6 +3,7 @@
 *.picasa*
 btre_resources/
 btre/__pycache__
+env*
 pages/__pycache__
 pages/migrations/__pycache__
 /static
