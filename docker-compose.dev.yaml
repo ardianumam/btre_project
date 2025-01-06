@@ -1,0 +1,29 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: ardianumam/django-btre:dev
+    container_name: django_c_dev
+    command: python3 manage.py runserver 0.0.0.0:9000
+    volumes:
+      - .:/app/ # use host bind volume (path is specified) to sync the project code on the container if we modify from the host machine
+    ports:
+      - 9000:9000
+    env_file:
+      - ./env/.env.dev
+    depends_on:
+      - db
+
+  db:
+    image: postgres:alpine
+    container_name: postgres_c
+    env_file:
+      - ./env/.env.dev.db
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data_dev:/var/lib/postgresql/data # using docker-managed volume (name is specified instead of path)
+
+volumes:
+  db_data_dev:

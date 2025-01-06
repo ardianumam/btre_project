@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    image: django_i
+    image: ardianumam/django-btre
     container_name: django_c
     command: gunicorn btre.wsgi:application --bind 0.0.0.0:8000
     volumes:
@@ -17,7 +17,7 @@ services:
       - db
 
   db:
-    image: postgres:latest
+    image: postgres:alpine
     container_name: postgres_c
     ports:
       - 5432:5432
@@ -28,7 +28,7 @@ services:
 
   nginx:
     build: ./nginx
-    image: nginx_i
+    image: ardianumam/nginx
     container_name: nginx_c
     volumes:
       - static_volume:/home/app/web/static

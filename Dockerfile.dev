@@ -1,0 +1,25 @@
+# define base image
+FROM python:3.9-slim-buster
+
+# set the working dir
+WORKDIR /app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+# PYTHONDONTWRITEBYTECODE: Prevents Python from writing pyc files to disc (equivalent to python -B option)
+# PYTHONUNBUFFERED: Prevents Python from buffering stdout and stderr (equivalent to python -u option)
+
+# install system dependencies
+RUN apt-get update && apt-get -y install netcat && \
+    apt-get -y install libpq-dev gcc 
+
+# install python libraries
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt --no-cache-dir
+
+# optional: install nano
+RUN apt-get install nano
+
+# copy the project files
+COPY . .
