@@ -3,7 +3,9 @@
 *.picasa*
 btre_resources/
 btre/__pycache__
+Django_Udemy_vllab-pc.code-workspace
 env*
+media/
 pages/__pycache__
 pages/migrations/__pycache__
 /static
