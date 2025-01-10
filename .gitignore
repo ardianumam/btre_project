@@ -1,5 +1,5 @@
 */__pycache__
-*/__pycache__/*
+*__pycache__*
 *.picasa*
 btre_resources/
 btre/__pycache__
@@ -8,4 +8,4 @@ env*
 media/
 pages/__pycache__
 pages/migrations/__pycache__
-/static
+static/*
