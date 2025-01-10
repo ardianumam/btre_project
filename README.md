@@ -32,9 +32,10 @@ Note that you don't need to create the database by yourself. You only need to sp
 ### How to run the the app
 1. Run `docker compose -f Dockerfile.prod.yaml up -d` to compose three required containers: (i) Django webapp, (ii) Postgres for database, and (iii) Nginx for server. If you use the old docker, you may need to replace `docker compose` with `docker-compose`
 2. Check if all three containers run properly by `docker ps`. The three containers are expected to appear in the list
-3. Run the database migration by `docker exec postgres_c python manage.py migrate`
-4. Open `http://localhost:9000` on your browser to see the django webapp
-5. Otional: 
+3. Run the database migration by `docker exec django_c python manage.py migrate`
+4. Collect Django static files by `docker exec django_c python manage.py collectstatic`
+5. Open `http://localhost:9000` on your browser to see the django webapp
+6. Otional: 
     * Create superuser for django admin
       * Enter the django container by `docker exec -it django_c sh`
       * Run `python manage.py createsuperuser` and proceed with specifying your username and password
