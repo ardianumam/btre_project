@@ -38,7 +38,7 @@ Note that you don't need to create the database by yourself. You only need to sp
     * Create superuser for django admin
       * Enter the django container by `docker exec -it django_c sh`
       * Run `python manage.py createsuperuser` and proceed with specifying your username and password
-    * Login the django admin in `http://localhost/admin` using the username and password you created above
+    * Login into the django admin in `http://localhost/admin` using the username and password you created above
     * As admin, you can add some data via the django admin dashboard. For example, you can add house listing data, realter, etc.
 
 **Note**: 
