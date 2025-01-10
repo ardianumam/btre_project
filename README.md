@@ -7,6 +7,7 @@ You can see the running app demo [here](http://52.63.44.101:9000/)
 ### Requirements
 1. Install [Docker](https://docs.docker.com/engine/install/) in your machine
 2. Create two environment files: `.env.prod` and `.env.prod.db`, which define the system settings. Create  `env` folder and put the two environment files there.
+   
     `.env.prod` content:
     ```
     DEBUG=0
