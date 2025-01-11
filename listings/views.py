@@ -42,21 +42,24 @@ def search(request):
     # State
     if 'state' in request.GET:
         state = request.GET['state']
+        print(f" ------------------------> {state}")
         if state and "All" not in state:
             queryset_list = queryset_list.filter(state__iexact=state)
     
     # Bedroom
     if 'bedrooms' in request.GET:
         bedrooms = request.GET['bedrooms']
-        print(f"bedrooms: {bedrooms}, type: {type(bedrooms)}")
         if bedrooms and bedrooms.isdigit():
-            queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
-            
+            queryset_list = queryset_list.filter(bedrooms__iexact=bedrooms)
+             
     # Price
     if 'price' in request.GET:
         price = request.GET['price']
         if price and "All" not in price:
-            queryset_list = queryset_list.filter(price__lte=price)
+            if int(price) < 1000000:
+                queryset_list = queryset_list.filter(price__lte=price)
+            else:
+                queryset_list = queryset_list.filter(price__gte=price)
             
     context = {
         'state_choices': state_choices,
