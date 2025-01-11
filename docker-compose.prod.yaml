@@ -15,6 +15,8 @@ services:
       - ./env/.env.prod
     depends_on:
       - db
+    networks:
+      - django_network
 
   db:
     image: postgres:alpine
@@ -22,9 +24,11 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - db_data:/var/lib/postgresql/data # using docker-managed volume (name is specified instead of path)
-    env_file: 
-    - ./env/.env.prod.db
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - ./env/.env.prod.db
+    networks:
+      - django_network
 
   nginx:
     build: ./nginx
@@ -37,8 +41,17 @@ services:
       - 9000:80
     depends_on:
       - web
+    networks:
+      - django_network
 
 volumes:
   db_data:
+    name: django-realter-app_db_data
   static_volume:
+    name: django-realter-app_static_volume
   media_volume:
+    name: django-realter-app_media_volume
+
+networks:
+  django_network:
+    name: django-realter-app_network
